@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 
-import Container from '../atoms/container'
+import Container from '@/components/atoms/container'
 
 export default function BottomFooter() {
   const year = new Date().getFullYear().toString()

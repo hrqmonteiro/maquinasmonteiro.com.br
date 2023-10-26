@@ -2,8 +2,8 @@
 
 import Link from 'next/link'
 
-import Container from '../atoms/container'
-import Logo from '../atoms/logo'
+import Container from '@/components/atoms/container'
+import Logo from '@/components/atoms/logo'
 
 export default function TopFooter() {
   return (

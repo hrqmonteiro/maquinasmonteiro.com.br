@@ -2,9 +2,8 @@
 
 import Link from 'next/link'
 
+import Container from '@/components/atoms/container'
 import Logo from '@/components/atoms/logo'
-
-import Container from '../atoms/container'
 
 export default function Topbar() {
   return (

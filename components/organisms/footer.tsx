@@ -1,8 +1,7 @@
 'use client'
 
 import BottomFooter from '@/components/molecules/bottom-footer'
-
-import TopFooter from '../molecules/top-footer'
+import TopFooter from '@/components/molecules/top-footer'
 
 export default function Footer() {
   return (
