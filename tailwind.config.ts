@@ -6,7 +6,14 @@ export default {
     './components/**/*.{js,ts,jsx,tsx,mdx}'
   ],
   theme: {
-    extend: {}
+    extend: {
+      colors: {
+        primary: '#2D3C96'
+      },
+      textColor: {
+        primary: '#FFFFFF'
+      }
+    }
   },
   plugins: []
 } satisfies Config
