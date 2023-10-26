@@ -32,8 +32,8 @@ export default function TopFooter() {
               <br />
               <br />
               <Link
-                className='font-bold underline'
-                href='mailto@contato@maquinasmonteiro.com.br'
+                className='font-bold underline transition-all duration-200 hover:opacity-80'
+                href='mailto:contato@maquinasmonteiro.com.br'
               >
                 contato@maquinasmonteiro.com.br
               </Link>
