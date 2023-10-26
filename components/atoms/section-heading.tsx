@@ -20,7 +20,7 @@ export default function SectionHeading({
 }: SectionHeadingProps) {
   return (
     <Container>
-      <div className='my-20 flex w-full flex-wrap justify-between md:flex-nowrap'>
+      <div className='my-8 flex w-full flex-wrap justify-between md:flex-nowrap'>
         <div className={`py-4 ${!image ? 'md:w-full' : 'md:w-1/2'}`}>
           <h3 className='text-2xl font-bold md:text-4xl'>{heading}</h3>
           <h4 className='text-2xl font-light md:text-4xl'>{subheading}</h4>

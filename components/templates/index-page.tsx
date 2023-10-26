@@ -3,7 +3,12 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { partner, partners } from '@/utils/constants'
-import { EnvelopeSimple, MapPin, WhatsappLogo } from '@phosphor-icons/react'
+import {
+  Clock,
+  EnvelopeSimple,
+  MapPin,
+  WhatsappLogo
+} from '@phosphor-icons/react'
 import toast from 'react-hot-toast'
 
 import LeftSectionHeading from '@/components/atoms/left-section-heading'
@@ -110,6 +115,8 @@ export default function IndexPage() {
       <LeftSectionHeading
         heading='Trazemos décadas de experiência'
         subheading='no ramo joalheiro'
+        image='/hero.jpg'
+        width={600}
       >
         <div className='flex justify-center'>
           <div>
@@ -149,12 +156,11 @@ export default function IndexPage() {
         ))}
       </ul>
       <SectionDivider />
-      <Map />
       <Container>
         <SectionHeading heading='Entre em' subheading='Contato'>
-          <div className='w-full py-10'>
+          <div className='w-full'>
             <div className='flex flex-wrap justify-start md:flex-nowrap'>
-              <div className='mb-8 w-full md:w-1/2'>
+              <div className='w-full md:w-1/2'>
                 <div className='mb-8 font-bold'>Informações de contato</div>
                 <div className='flex w-full flex-wrap items-start'>
                   <MapPin className='mr-2 text-accent' />
@@ -172,14 +178,33 @@ export default function IndexPage() {
                     contato@maquinasmonteiro.com.br
                   </div>
                 </div>
-                <div className='flex w-full flex-wrap items-start'>
+                <div className='mb-8 flex w-full flex-wrap items-start'>
                   <WhatsappLogo className='mr-2 text-accent' />
                   <div className='-mt-1 mb-6 flex items-start'>
                     (17) 991448508 / (17) 99123 5432
                   </div>
                 </div>
+                <div className='mb-8 font-bold'>Horário de Funcionamento</div>
+                <div className='flex w-full flex-wrap items-start'>
+                  <Clock className='mr-2 text-accent' />
+                  <div className='-mt-1 mb-6 flex flex-nowrap items-start'>
+                    Segunda à Sexta: 7h30 às 17h30
+                  </div>
+                </div>
+                <div className='flex w-full flex-wrap items-start'>
+                  <Clock className='mr-2 text-accent' />
+                  <div className='-mt-1 mb-6 flex items-start'>
+                    Sábado: fechado
+                  </div>
+                </div>
+                <div className='mb-8 flex w-full flex-wrap items-start'>
+                  <Clock className='mr-2 text-accent' />
+                  <div className='-mt-1 mb-6 flex items-start'>
+                    Domingo: fechado
+                  </div>
+                </div>
               </div>
-              <form onSubmit={onSubmit} className='mb-8 w-full md:w-1/2'>
+              <form onSubmit={onSubmit} className='w-full md:w-1/2'>
                 <div className='mb-8 font-bold'>Enviar um e-mail</div>
                 <div className='block justify-between md:flex'>
                   <input
@@ -218,11 +243,12 @@ export default function IndexPage() {
                 </div>
                 <div className='block justify-between md:flex'>
                   <textarea
-                    className='focus:shadow-outline mb-4 w-full appearance-none rounded border px-4 py-3 leading-tight text-gray-700 shadow focus:outline-none'
-                    rows={8}
+                    className='focus:shadow-outline mb-4 w-full appearance-none break-words rounded border px-4 py-3 leading-tight text-gray-700 shadow focus:outline-none'
+                    rows={10}
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
                     placeholder='Mensagem...'
+                    wrap='hard'
                   />
                 </div>
                 <div className='flex justify-end'>
@@ -238,6 +264,7 @@ export default function IndexPage() {
           </div>
         </SectionHeading>
       </Container>
+      <Map height={600} />
     </>
   )
 }
