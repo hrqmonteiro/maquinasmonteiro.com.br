@@ -14,7 +14,8 @@ export default {
       },
       textColor: {
         accent: 'rgb(var(--color-accent) / <alpha-value>)',
-        primary: 'rgb(var(--color-text-primary) / <alpha-value>)'
+        primary: 'rgb(var(--color-text-primary) / <alpha-value>)',
+        secondary: 'rgb(var(--color-text-secondary) / <alpha-value>)'
       }
     }
   },
