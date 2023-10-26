@@ -21,8 +21,7 @@ export async function POST(request: Request) {
 
 Nome: ${name}
 Email: ${email}
-Telefone/Celular: ${phone}
-    `
+Telefone/Celular: ${phone}`
   }
 
   try {
