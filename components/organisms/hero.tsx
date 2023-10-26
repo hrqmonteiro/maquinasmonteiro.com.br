@@ -10,12 +10,12 @@ export default function Hero() {
 
   return (
     <div
-      className='relative flex h-screen w-screen items-center '
+      className='md:min-w-screen relative flex min-h-screen items-center '
       style={{
         backgroundImage: 'url("/hero.jpg")',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
-        backgroundSize: '100%'
+        backgroundSize: '100% 100%'
       }}
     >
       <div className='brightness-20 absolute inset-0 z-0 bg-black opacity-80 filter'></div>
@@ -35,7 +35,7 @@ export default function Hero() {
             </p>
           </div>
           <button
-            className='my-20 rounded-md border px-6 py-4 font-bold transition-all duration-200 hover:opacity-80'
+            className='my-10 rounded-md border px-6 py-4 font-bold transition-all duration-200 hover:opacity-80 md:my-20'
             onClick={() => router.push('/catalogo')}
           >
             Nosso catálogo
