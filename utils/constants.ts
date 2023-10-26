@@ -36,3 +36,31 @@ export function compareFn(a: catalogItem, b: catalogItem) {
 
   return nameA < nameB ? -1 : nameA > nameB ? 1 : 0
 }
+
+export type partner = {
+  name: string
+  url: string
+}
+
+export const partners: partner[] = [
+  {
+    name: 'Ajoresp Tech',
+    url: 'http://ajoresp.com.br/formulario-de-incricao/index.php/ajoresp-tech-junho-2023/'
+  },
+  {
+    name: 'Feninjer Tech',
+    url: 'https://feninjer.com.br'
+  },
+  {
+    name: 'Feira do Empreendedor SEBRAE',
+    url: 'https://feiradoempreendedor.sebraesp.com.br/'
+  },
+  {
+    name: 'Tecnogold',
+    url: 'https://www.facebook.com/tecnogold.oficial/'
+  },
+  {
+    name: 'Polo Joalheiro',
+    url: 'https://ajoresp.com.br'
+  }
+]
