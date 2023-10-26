@@ -1,6 +1,7 @@
 import Container from '@/components/atoms/container'
 import Navbar from '@/components/molecules/navbar'
 import Topbar from '@/components/molecules/topbar'
+import Footer from '@/components/organisms/footer'
 
 import '@/styles/globals.css'
 
@@ -25,6 +26,7 @@ export default function RootLayout({
         <Topbar />
         <Navbar />
         <Container>{children}</Container>
+        <Footer />
       </body>
     </html>
   )
