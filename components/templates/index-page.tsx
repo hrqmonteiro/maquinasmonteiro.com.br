@@ -2,6 +2,12 @@
 
 import Link from 'next/link'
 import { partner, partners } from '@/utils/constants'
+import {
+  EnvelopeSimple,
+  MapPin,
+  Phone,
+  WhatsappLogo
+} from '@phosphor-icons/react'
 
 import LeftSectionHeading from '@/components/atoms/left-section-heading'
 import Map from '@/components/atoms/map'
@@ -78,11 +84,66 @@ export default function IndexPage() {
       <Map />
       <Container>
         <SectionHeading heading='Entre em' subheading='Contato'>
-          <div className='w-full'>
-            <div className='flex flex-wrap justify-between md:flex-nowrap'>
-              <div className='w-1/2'>Contact details</div>
-              <form className='w-1/2'>
-                <input type='text' placeholder='blablabla' />
+          <div className='w-full py-10'>
+            <div className='flex flex-wrap justify-start md:flex-nowrap'>
+              <div className='mb-8 w-full md:w-1/2'>
+                <div className='mb-8 font-bold'>Informações de contato</div>
+                <div className='flex w-full flex-wrap items-start'>
+                  <MapPin className='mr-2 text-accent' />
+                  <div className='-mt-1 mb-6 flex flex-nowrap items-start'>
+                    Cenobelino de Barros Serra, 1920
+                    <br />
+                    Parque Industrial
+                    <br />
+                    São José do Rio Preto, SP
+                  </div>
+                </div>
+                <div className='flex w-full flex-wrap items-start'>
+                  <EnvelopeSimple className='mr-2 text-accent' />
+                  <div className='-mt-1 mb-6 flex items-start'>
+                    contato@maquinasmonteiro.com.br
+                  </div>
+                </div>
+                <div className='flex w-full flex-wrap items-start'>
+                  <WhatsappLogo className='mr-2 text-accent' />
+                  <div className='-mt-1 mb-6 flex items-start'>
+                    (17) 991448508 / (17) 99123 5432
+                  </div>
+                </div>
+              </div>
+              <form className='mb-8 w-full md:w-1/2'>
+                <div className='mb-8 font-bold'>Enviar um e-mail</div>
+                <div className='block justify-between md:flex'>
+                  <input
+                    className='focus:shadow-outline mb-4 mr-4 w-full appearance-none rounded border px-4 py-3 leading-tight text-gray-700 shadow focus:outline-none'
+                    type='text'
+                    placeholder='Nome completo'
+                  />
+                  <input
+                    className='focus:shadow-outline mb-4 w-full appearance-none rounded border px-4 py-3 leading-tight text-gray-700 shadow focus:outline-none'
+                    type='text'
+                    placeholder='Empresa (se houver)'
+                  />
+                </div>
+                <div className='block justify-between md:flex'>
+                  <input
+                    className='focus:shadow-outline mb-4 mr-4 w-full appearance-none rounded border px-4 py-3 leading-tight text-gray-700 shadow focus:outline-none'
+                    type='text'
+                    placeholder='Email para contato'
+                  />
+                  <input
+                    className='focus:shadow-outline mb-4 w-full appearance-none rounded border px-4 py-3 leading-tight text-gray-700 shadow focus:outline-none'
+                    type='text'
+                    placeholder='Telefone/celular para contato'
+                  />
+                </div>
+                <div className='block justify-between md:flex'>
+                  <textarea
+                    className='focus:shadow-outline mb-4 w-full appearance-none rounded border px-4 py-3 leading-tight text-gray-700 shadow focus:outline-none'
+                    rows={8}
+                    placeholder='Mensagem...'
+                  />
+                </div>
               </form>
             </div>
           </div>
