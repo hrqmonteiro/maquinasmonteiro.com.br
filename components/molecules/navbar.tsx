@@ -1,19 +1,24 @@
 'use client'
 
 import Link from 'next/link'
-import { constants } from '@/utils/constants'
+import { catalogItems, compareFn, type catalogItem } from '@/utils/constants'
 
 export default function Navbar() {
   return (
-    <div className='my-4 flex h-16 items-center justify-between rounded-md bg-primary p-3 text-primary'>
-      <ul className='inline-flex'>
-        {constants.map((constant, index: number) => (
-          <Link href={constant.url} key={index}>
-            <li className='mr-2 transition-all duration-200 hover:opacity-90'>
-              {constant.name}
+    <div className='my-4 flex h-16 flex-nowrap items-center bg-primary px-6 text-primary'>
+      <ul className='flex w-full flex-nowrap items-center justify-between overflow-x-auto'>
+        {catalogItems
+          .sort(compareFn)
+          .map(({ name, url }: catalogItem, index: number) => (
+            <li
+              className='mr-4 font-medium transition-all duration-200 hover:opacity-80 md:mr-0'
+              key={index}
+            >
+              <Link className='truncate' href={url}>
+                {name}
+              </Link>
             </li>
-          </Link>
-        ))}
+          ))}
       </ul>
     </div>
   )
