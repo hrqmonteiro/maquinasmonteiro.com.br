@@ -1,13 +1,10 @@
 'use client'
 
+import { useState } from 'react'
 import Link from 'next/link'
 import { partner, partners } from '@/utils/constants'
-import {
-  EnvelopeSimple,
-  MapPin,
-  Phone,
-  WhatsappLogo
-} from '@phosphor-icons/react'
+import { EnvelopeSimple, MapPin, WhatsappLogo } from '@phosphor-icons/react'
+import toast from 'react-hot-toast'
 
 import LeftSectionHeading from '@/components/atoms/left-section-heading'
 import Map from '@/components/atoms/map'
@@ -18,6 +15,77 @@ import Hero from '@/components/organisms/hero'
 import Container from '../atoms/container'
 
 export default function IndexPage() {
+  const [name, setName] = useState<string>('')
+  const [email, setEmail] = useState<string>('')
+  const [business, setBusiness] = useState<string>('')
+  const [phone, setPhone] = useState<string | undefined>('')
+  const [message, setMessage] = useState<string>('')
+
+  const formatPhoneNumber = (input: string): string | undefined => {
+    if (input) {
+      const numericInput = input.replace(/\D/g, '')
+
+      let formattedNumber = ''
+
+      if (numericInput.length >= 2) {
+        formattedNumber += `(${numericInput.substring(0, 2)}`
+      } else if (numericInput.length > 0) {
+        formattedNumber += `(${numericInput.substring(0)}`
+      }
+
+      if (numericInput.length > 2) {
+        formattedNumber += `) ${numericInput.substring(2, 7)}`
+      } else if (numericInput.length > 0) {
+        formattedNumber += `) ${numericInput.substring(2)}`
+      }
+
+      if (numericInput.length > 7) {
+        formattedNumber += `-${numericInput.substring(7, 11)}`
+      } else if (numericInput.length > 2) {
+        formattedNumber += `-${numericInput.substring(7)}`
+      }
+
+      return formattedNumber
+    }
+  }
+
+  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+
+    async function sendEmail() {
+      try {
+        const response = await fetch('/api/sendmail', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            name: name,
+            email: email,
+            message: message,
+            phone: phone
+          })
+        })
+
+        if (response.ok) {
+          toast.success('Email enviado com sucesso! Aguarde nossa resposta!')
+          setName('')
+          setEmail('')
+          setBusiness('')
+          setPhone('')
+          setMessage('')
+        } else {
+          toast.error('Não foi possível enviar o e-mail, tente novamente.')
+        }
+      } catch (error) {
+        toast.error('Não foi possível enviar o e-mail, tente novamente.')
+        console.error('Error:', error)
+      }
+    }
+
+    sendEmail()
+  }
+
   return (
     <>
       <Hero />
@@ -111,29 +179,40 @@ export default function IndexPage() {
                   </div>
                 </div>
               </div>
-              <form className='mb-8 w-full md:w-1/2'>
+              <form onSubmit={onSubmit} className='mb-8 w-full md:w-1/2'>
                 <div className='mb-8 font-bold'>Enviar um e-mail</div>
                 <div className='block justify-between md:flex'>
                   <input
                     className='focus:shadow-outline mb-4 mr-4 w-full appearance-none rounded border px-4 py-3 leading-tight text-gray-700 shadow focus:outline-none'
                     type='text'
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
                     placeholder='Nome completo'
                   />
                   <input
                     className='focus:shadow-outline mb-4 w-full appearance-none rounded border px-4 py-3 leading-tight text-gray-700 shadow focus:outline-none'
                     type='text'
+                    value={business}
+                    onChange={(e) => setBusiness(e.target.value)}
                     placeholder='Empresa (se houver)'
                   />
                 </div>
                 <div className='block justify-between md:flex'>
                   <input
                     className='focus:shadow-outline mb-4 mr-4 w-full appearance-none rounded border px-4 py-3 leading-tight text-gray-700 shadow focus:outline-none'
-                    type='text'
+                    type='email'
+                    value={email}
+                    title='test'
+                    onChange={(e) => setEmail(e.target.value)}
                     placeholder='Email para contato'
                   />
                   <input
                     className='focus:shadow-outline mb-4 w-full appearance-none rounded border px-4 py-3 leading-tight text-gray-700 shadow focus:outline-none'
                     type='text'
+                    value={phone}
+                    onChange={(e) =>
+                      setPhone(formatPhoneNumber(e.target.value))
+                    }
                     placeholder='Telefone/celular para contato'
                   />
                 </div>
@@ -141,8 +220,18 @@ export default function IndexPage() {
                   <textarea
                     className='focus:shadow-outline mb-4 w-full appearance-none rounded border px-4 py-3 leading-tight text-gray-700 shadow focus:outline-none'
                     rows={8}
+                    value={message}
+                    onChange={(e) => setMessage(e.target.value)}
                     placeholder='Mensagem...'
                   />
+                </div>
+                <div className='flex justify-end'>
+                  <button
+                    className='rounded-md border border-primary px-6 py-3 font-bold text-secondary transition-all duration-200 hover:opacity-80'
+                    type='submit'
+                  >
+                    Enviar
+                  </button>
                 </div>
               </form>
             </div>
